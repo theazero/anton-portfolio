@@ -1,0 +1,717 @@
+/* portfolio made by Thea Ericson 2026 */
+
+
+/* ═══════════════════════════════════════════
+   LANDING PAGE
+   ═══════════════════════════════════════════ */
+.landing {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  cursor: none;
+}
+
+.landing-center {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.landing-name {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: clamp(80px, 14vw, 220px);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: #fff;
+  line-height: 0.85;
+  text-transform: uppercase;
+  cursor: none;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.landing-line.clickable {
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+
+.landing-line.clickable::after {
+  height: 8px;
+  transform: scaleX(0);
+}
+
+.landing-name:hover .landing-line.clickable::after {
+  transform: scaleX(1);
+}
+
+.landing-name .decrypted-char {
+  color: #fff;
+}
+
+.landing-name .encrypted-char {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.landing-roles {
+  display: flex;
+  gap: 16px;
+}
+
+.landing-roles .hl {
+  cursor: none;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.landing-footer {
+  position: absolute;
+  bottom: 24px;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 32px;
+  gap: 4px;
+  font-size: 14px;
+  color: #fff;
+  letter-spacing: 1px;
+  z-index: 1;
+}
+
+.landing-footer-row {
+  display: flex;
+  gap: 8px;
+}
+
+.landing-footer a {
+  color: #fff;
+}
+
+.landing-footer a:hover {
+  color: #fff;
+}
+
+/* ═══════════════════════════════════════════
+   HIGHLIGHT
+   ═══════════════════════════════════════════ */
+.hl {
+  background: #39ff14;
+  color: #0a0a0a;
+  padding: 0 3px;
+}
+
+/* ═══════════════════════════════════════════
+   CLICKABLE — neon green strikethrough on hover
+   ═══════════════════════════════════════════ */
+.clickable {
+  position: relative;
+  display: inline;
+  text-decoration: none;
+  color: #fff;
+  background: none;
+  border: none;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 400;
+  font-size: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: none;
+  padding: 0;
+}
+
+.clickable::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 3px;
+  background: #39ff14;
+  transform: scaleX(0);
+  pointer-events: none;
+}
+
+.clickable:hover::after {
+  transform: scaleX(1);
+}
+
+.clickable:focus-visible,
+.nav-btn:focus-visible,
+.animation-toggle:focus-visible,
+.green-term-button:focus-visible,
+.back-to-top:focus-visible {
+  outline: 2px solid #39ff14;
+  outline-offset: 5px;
+  border-radius: 4px;
+}
+
+/* ═══════════════════════════════════════════
+   SPECTROGRAM BACKGROUND — fixed center
+   ═══════════════════════════════════════════ */
+.spectrogram-fixed {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56vw;
+  height: 62vh;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.58;
+  border-radius: 50%;
+  overflow: hidden;
+  filter: blur(4px);
+  mask-image: radial-gradient(ellipse at center, black 22%, rgba(0, 0, 0, 0.72) 48%, transparent 74%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 22%, rgba(0, 0, 0, 0.72) 48%, transparent 74%);
+}
+
+.spectrogram-fixed::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 34%, rgba(10, 10, 10, 0.45) 58%, #0a0a0a 82%);
+}
+
+.spectrogram-wrap {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  transform: scale(1.06);
+}
+
+.spectrogram-wrap canvas {
+  display: block;
+}
+
+/* ═══════════════════════════════════════════
+   HOVER IMAGE OVERLAY — replaces spectrogram on project hover
+   ═══════════════════════════════════════════ */
+.hover-img-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50vw;
+  height: 55vh;
+  z-index: 50;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hover-img-overlay img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+/* ═══════════════════════════════════════════
+   CONTENT PAGE
+   ═══════════════════════════════════════════ */
+.content-page {
+  position: relative;
+}
+
+/* ═══════════════════════════════════════════
+   NAVBAR — fixed top right
+   ═══════════════════════════════════════════ */
+.navbar {
+  position: fixed;
+  top: 16px;
+  right: 18px;
+  z-index: 100;
+  display: flex;
+  gap: 24px;
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 18px 48px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(16px) saturate(1.5);
+  -webkit-backdrop-filter: blur(16px) saturate(1.5);
+}
+
+.navbar .nav-btn {
+  background: none;
+  border: none;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: none;
+  padding: 0;
+  color: #fff;
+}
+
+.animation-toggle {
+  position: fixed;
+  top: 74px;
+  right: 18px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-family: 'Times New Roman', Times, serif;
+  cursor: none;
+  backdrop-filter: blur(16px) saturate(1.5);
+  -webkit-backdrop-filter: blur(16px) saturate(1.5);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 18px 48px rgba(0, 0, 0, 0.35);
+}
+
+.animation-toggle-label {
+  font-size: 11px;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+}
+
+.animation-toggle-track {
+  position: relative;
+  width: 30px;
+  height: 16px;
+  border: 1px solid rgba(57, 255, 20, 0.5);
+  border-radius: 999px;
+  background: rgba(57, 255, 20, 0.16);
+}
+
+.animation-toggle-thumb {
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #39ff14;
+  transform: translateY(-50%);
+  transition: left 0.18s ease, right 0.18s ease, background 0.18s ease;
+}
+
+.animation-toggle[aria-pressed='false'] .animation-toggle-track {
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.animation-toggle[aria-pressed='false'] .animation-toggle-thumb {
+  right: 3px;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+/* ═══════════════════════════════════════════
+   CONTENT BODY
+   ═══════════════════════════════════════════ */
+.content-body {
+  position: relative;
+  z-index: 1;
+  padding: 38vh 64px 120px;
+}
+
+/* ═══════════════════════════════════════════
+   SECTION — big overlapping title like ALIAS
+   ═══════════════════════════════════════════ */
+.section-block {
+  margin-bottom: 128px;
+  scroll-margin-top: 64px;
+  position: relative;
+}
+
+.section-big-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: clamp(72px, 10.8vw, 180px);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: #fff;
+  line-height: 0.85;
+  text-transform: uppercase;
+  text-align: center;
+  position: relative;
+  z-index: 3;
+  pointer-events: none;
+  margin-bottom: 52px;
+  padding-top: 56px;
+}
+
+.section-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* ═══════════════════════════════════════════
+   GREEN TERMS — project keywords
+   ═══════════════════════════════════════════ */
+.green-term {
+  color: #39ff14;
+  font-weight: 400;
+  cursor: none;
+  transition: text-shadow 0.15s;
+}
+
+.green-term-button {
+  display: inline;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.green-term:hover {
+  text-shadow: 0 0 8px rgba(57, 255, 20, 0.5);
+}
+
+.green-term:focus-visible {
+  text-shadow: 0 0 8px rgba(57, 255, 20, 0.5);
+}
+
+.project-entry {
+  cursor: none;
+}
+
+.back-to-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin: 96px auto 0;
+  border: 0;
+  background: transparent;
+  color: #39ff14;
+}
+
+.back-to-top-arrow {
+  position: relative;
+  display: block;
+  width: 3px;
+  height: 24px;
+  background: #39ff14;
+  border-radius: 999px;
+}
+
+.back-to-top-arrow::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  width: 13px;
+  height: 13px;
+  border-top: 3px solid #39ff14;
+  border-left: 3px solid #39ff14;
+  border-radius: 2px 0 0;
+  transform: translateX(-50%) rotate(45deg);
+  transform-origin: center;
+}
+
+/* ═══════════════════════════════════════════
+   CONTACT
+   ═══════════════════════════════════════════ */
+.contact-block {
+  margin-top: 48px;
+  margin-bottom: 48px;
+}
+
+.contact-block h3 {
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.contact-list {
+  list-style: none;
+}
+
+.contact-list li {
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.contact-list a {
+  color: #fff;
+  font-size: 16px;
+}
+
+/* ═══════════════════════════════════════════
+   SKILLS
+   ═══════════════════════════════════════════ */
+.skills-block {
+  margin-bottom: 48px;
+}
+
+.skills-block > h3 {
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 40px;
+}
+
+.skill-group h3 {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 4px;
+  text-decoration: none;
+}
+
+.skill-group p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #fff;
+}
+
+/* ═══════════════════════════════════════════
+   PROFILE
+   ═══════════════════════════════════════════ */
+.profile-text {
+  font-size: 18px;
+  line-height: 1.9;
+  color: #fff;
+}
+
+.profile-text em {
+  color: #fff;
+  display: block;
+  margin-top: 16px;
+}
+
+/* ═══════════════════════════════════════════
+   ENTRIES
+   ═══════════════════════════════════════════ */
+.entry {
+  margin-bottom: 32px;
+}
+
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.entry-title {
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.entry-date {
+  font-size: 15px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.entry-subtitle {
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.entry-description {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.education-detail {
+  margin-bottom: 18px;
+}
+
+.education-label {
+  display: block;
+  margin-bottom: 6px;
+  color: #39ff14;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.education-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.education-tags .hl {
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.entry-tech {
+  font-size: 14px;
+  color: #fff;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.entry ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.entry ul li {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #fff;
+  padding-left: 16px;
+  position: relative;
+  margin-bottom: 4px;
+}
+
+.entry ul li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: #39ff14;
+  font-weight: 700;
+}
+
+/* ═══════════════════════════════════════════
+   GALLERY / PROJECT IMAGES
+   ═══════════════════════════════════════════ */
+.entry-images {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+.entry-images .gallery-figure {
+  flex: 1;
+  min-width: 0;
+}
+
+.gallery-figure {
+  margin: 0;
+}
+
+.gallery-figure img {
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+}
+
+.gallery-figure figcaption {
+  margin-top: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.5;
+}
+
+.fig-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  margin-right: 8px;
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .landing-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .landing-footer-row {
+    flex-wrap: wrap;
+  }
+
+  .content-body {
+    padding: 38vh 24px 80px;
+  }
+
+  .section-big-title {
+    font-size: 54px;
+    margin-bottom: 36px;
+  }
+
+  .navbar {
+    padding: 12px 16px;
+    gap: 12px;
+  }
+
+  .navbar .nav-btn {
+    font-size: 14px;
+  }
+
+  .animation-toggle {
+    top: 62px;
+    right: 16px;
+    padding: 7px 9px;
+  }
+
+  .animation-toggle-label {
+    font-size: 10px;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .entry-images {
+    flex-direction: column;
+  }
+
+  .spectrogram-fixed {
+    width: 90vw;
+    height: 40vh;
+  }
+
+  .hover-img-overlay {
+    width: 90vw;
+    height: 40vh;
+  }
+
+  .cursor-dot {
+    display: none;
+  }
+}

@@ -1,12 +1,19 @@
 # Anton Ernstsson Portfolio
 
-A personal portfolio website for Anton Ernstsson, presenting his work across data engineering, AI development, machine learning, and production-oriented data systems.
+A personal portfolio website for Anton Ernstsson, presenting his work across data engineering, AI development, machine learning, and production-oriented data systems!
 
-Designed and built by Thea Ericson!
+Designed and built by Thea Ericson. 
 
 
 
 ## Local Development
+
+Clone the repository:
+
+```bash
+git clone https://github.com/theazero/anton-portfolio.git
+cd anton-portfolio
+```
 
 Install dependencies:
 
